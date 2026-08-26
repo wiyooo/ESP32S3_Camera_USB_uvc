@@ -1,14 +1,9 @@
-#include <stdio.h>
 #include "esp32_s3_szp.h"
-#include "logo_en_240x240_lcd.h"
-#include "yingwu.h"
-
 
 void app_main(void)
 {
-    bsp_i2c_init();  // I2C初始化
-    pca9557_init();  // IO扩展芯片初始化
-    bsp_lcd_init();  // 液晶屏初始化
-    bsp_camera_init(); // 摄像头初始化
-    app_camera_lcd(); // 让摄像头画面显示到LCD上
+    ESP_ERROR_CHECK(bsp_i2c_init());
+    pca9557_init();
+    bsp_camera_init();
+    ESP_ERROR_CHECK(app_camera_usb_init());
 }

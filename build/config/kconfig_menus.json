@@ -31556,6 +31556,126 @@
             {
                 "children": [
                     {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "CU_RELINKER_ENABLE",
+                                "help": "\"Enable this option to print error information instead of\n    throwing exception when missing function\"",
+                                "id": "CU_RELINKER_ENABLE_PRINT_ERROR_INFO_WHEN_MISSING_FUNCTION",
+                                "name": "CU_RELINKER_ENABLE_PRINT_ERROR_INFO_WHEN_MISSING_FUNCTION",
+                                "range": null,
+                                "title": "Print error information when missing function",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "SPI_FLASH_AUTO_SUSPEND && CU_RELINKER_ENABLE",
+                                "help": "\"Enable this option, although functions' attribution\nare IRAM_ATTR, or configured to be noflash by link.lf, they will\nnot be linked into IRAM. Only functions specified by relinker\nconfiguration file will be linked into IRAM.\"",
+                                "id": "CU_RELINKER_LINK_SPECIFIC_FUNCTIONS_TO_IRAM",
+                                "name": "CU_RELINKER_LINK_SPECIFIC_FUNCTIONS_TO_IRAM",
+                                "range": null,
+                                "title": "Link specific functions to IRAM regardless of ESP-IDF's behavior",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "CU_RELINKER_ENABLE_CUSTOMIZED_CONFIGURATION_FILES && CU_RELINKER_ENABLE",
+                                        "help": "\"Customized relinker configuration files path. This path is\nevaluated relative to the project root directory.\"",
+                                        "id": "CU_RELINKER_CUSTOMIZED_CONFIGURATION_FILES_PATH",
+                                        "name": "CU_RELINKER_CUSTOMIZED_CONFIGURATION_FILES_PATH",
+                                        "range": null,
+                                        "title": "Customized relinker configuration files path",
+                                        "type": "string"
+                                    }
+                                ],
+                                "depends_on": "CU_RELINKER_ENABLE",
+                                "help": "\"Enable this option to use customized relinker configuration\nfiles instead of default ones\"",
+                                "id": "CU_RELINKER_ENABLE_CUSTOMIZED_CONFIGURATION_FILES",
+                                "name": "CU_RELINKER_ENABLE_CUSTOMIZED_CONFIGURATION_FILES",
+                                "range": null,
+                                "title": "Enable customized relinker configuration files",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "\"Enable relinker to linker some IRAM functions to Flash\"",
+                        "id": "CU_RELINKER_ENABLE",
+                        "name": "CU_RELINKER_ENABLE",
+                        "range": null,
+                        "title": "Enable relinker",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "<choice CU_DIAGNOSTICS_COLOR>",
+                                "help": null,
+                                "id": "CU_DIAGNOSTICS_COLOR_NEVER",
+                                "name": "CU_DIAGNOSTICS_COLOR_NEVER",
+                                "range": null,
+                                "title": "never",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice CU_DIAGNOSTICS_COLOR>",
+                                "help": null,
+                                "id": "CU_DIAGNOSTICS_COLOR_ALWAYS",
+                                "name": "CU_DIAGNOSTICS_COLOR_ALWAYS",
+                                "range": null,
+                                "title": "always",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice CU_DIAGNOSTICS_COLOR>",
+                                "help": null,
+                                "id": "CU_DIAGNOSTICS_COLOR_AUTO",
+                                "name": "CU_DIAGNOSTICS_COLOR_AUTO",
+                                "range": null,
+                                "title": "auto",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "Use color in diagnostics. \"never\", \"always\", or \"auto\". If \"always\", GCC will output\nwith color defined in GCC_COLORS environment variable. If \"never\", only output plain\ntext. If \"auto\", only output with color when the standard error is a terminal and when\nnot executing in an emacs shell.",
+                        "id": "component-config-cmake-utilities-color-in-diagnostics",
+                        "name": "CU_DIAGNOSTICS_COLOR",
+                        "title": "Color in diagnostics",
+                        "type": "choice"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "\"Enable this option, users can enable GCC link time optimization(LTO)\n feature for target components or dependencies.",
+                        "id": "CU_GCC_LTO_ENABLE",
+                        "name": "CU_GCC_LTO_ENABLE",
+                        "range": null,
+                        "title": "Enable GCC link time optimization(LTO)",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "\"Enable this option, user can make string in designated components align\n by 1-byte instead 1-word(4-byte), this can reduce unnecessary filled data\n so that to reduce firmware size.\"",
+                        "id": "CU_GCC_STRING_1BYTE_ALIGN",
+                        "name": "CU_GCC_STRING_1BYTE_ALIGN",
+                        "range": null,
+                        "title": "GCC string 1-byte align",
+                        "type": "bool"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-cmake-utilities",
+                "title": "CMake Utilities",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
                         "children": [],
                         "depends_on": null,
                         "help": "Enable this option if you want to use the OV7670.\nDisable this option to save memory.",
@@ -32207,6 +32327,682 @@
                 "depends_on": null,
                 "id": "component-config-jpeg-decoder",
                 "title": "JPEG Decoder",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "TUSB_VID",
+                        "name": "TUSB_VID",
+                        "range": null,
+                        "title": "USB Device VID",
+                        "type": "hex"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "TUSB_PID",
+                        "name": "TUSB_PID",
+                        "range": null,
+                        "title": "USB Device PID",
+                        "type": "hex"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "TUSB_MANUFACTURER",
+                        "name": "TUSB_MANUFACTURER",
+                        "range": null,
+                        "title": "USB Device Manufacture",
+                        "type": "string"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "TUSB_PRODUCT",
+                        "name": "TUSB_PRODUCT",
+                        "range": null,
+                        "title": "Product Name",
+                        "type": "string"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "TUSB_SERIAL_NUM",
+                        "name": "TUSB_SERIAL_NUM",
+                        "range": null,
+                        "title": "Product ID",
+                        "type": "string"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If enable, support two cameras",
+                        "id": "UVC_SUPPORT_TWO_CAM",
+                        "name": "UVC_SUPPORT_TWO_CAM",
+                        "range": null,
+                        "title": "Support two cameras",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "(IDF_TARGET_ESP32P4 || IDF_TARGET_ESP32S31) && <choice TINYUSB_RHPORT>",
+                                "help": null,
+                                "id": "TINYUSB_RHPORT_HS",
+                                "name": "TINYUSB_RHPORT_HS",
+                                "range": null,
+                                "title": "High Speed",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice TINYUSB_RHPORT>",
+                                "help": null,
+                                "id": "TINYUSB_RHPORT_FS",
+                                "name": "TINYUSB_RHPORT_FS",
+                                "range": null,
+                                "title": "Full Speed",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "Allows set the USB PHY Controller for TinyUSB: HS (USB OTG2.0 PHY for HighSpeed)",
+                        "id": "component-config-usb-device-uvc-tinyusb-root-port",
+                        "name": "TINYUSB_RHPORT",
+                        "title": "TinyUSB Root Port",
+                        "type": "choice"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FORMAT>",
+                                        "help": null,
+                                        "id": "FORMAT_MJPEG_CAM1",
+                                        "name": "FORMAT_MJPEG_CAM1",
+                                        "range": null,
+                                        "title": "MJPEG",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FORMAT>",
+                                        "help": null,
+                                        "id": "FORMAT_H264_CAM1",
+                                        "name": "FORMAT_H264_CAM1",
+                                        "range": null,
+                                        "title": "H264",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FORMAT>",
+                                        "help": null,
+                                        "id": "FORMAT_UNCOMPR_CAM1",
+                                        "name": "FORMAT_UNCOMPR_CAM1",
+                                        "range": null,
+                                        "title": "uncompressed",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "component-config-usb-device-uvc-usb-cam1-config-uvc-cam1-format",
+                                "name": "UVC_CAM1_FORMAT",
+                                "title": "UVC Cam1 Format",
+                                "type": "choice"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_XFER_MODE>",
+                                        "help": null,
+                                        "id": "UVC_MODE_ISOC_CAM1",
+                                        "name": "UVC_MODE_ISOC_CAM1",
+                                        "range": null,
+                                        "title": "Isochronous",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_XFER_MODE>",
+                                        "help": null,
+                                        "id": "UVC_MODE_BULK_CAM1",
+                                        "name": "UVC_MODE_BULK_CAM1",
+                                        "range": null,
+                                        "title": "Bulk",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "component-config-usb-device-uvc-usb-cam1-config-uvc-cam1-transfer-mode",
+                                "name": "UVC_CAM1_XFER_MODE",
+                                "title": "UVC cam1 transfer mode",
+                                "type": "choice"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_QVGA",
+                                        "name": "FRAMESIZE_QVGA",
+                                        "range": null,
+                                        "title": "QVGA 320x240",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_HVGA",
+                                        "name": "FRAMESIZE_HVGA",
+                                        "range": null,
+                                        "title": "HVGA 480x320",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_VGA",
+                                        "name": "FRAMESIZE_VGA",
+                                        "range": null,
+                                        "title": "VGA 640x480",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_SVGA",
+                                        "name": "FRAMESIZE_SVGA",
+                                        "range": null,
+                                        "title": "SVGA 800x600",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_HD",
+                                        "name": "FRAMESIZE_HD",
+                                        "range": null,
+                                        "title": "HD 1280x720",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM1_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_FHD",
+                                        "name": "FRAMESIZE_FHD",
+                                        "range": null,
+                                        "title": "FHD 1920x1080",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "component-config-usb-device-uvc-usb-cam1-config-uvc-default-resolution",
+                                "name": "UVC_CAM1_FRAMESIZE",
+                                "title": "UVC Default Resolution",
+                                "type": "choice"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_CAM1_FRAMERATE",
+                                "name": "UVC_CAM1_FRAMERATE",
+                                "range": null,
+                                "title": "Frame Rate (FPS)",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_CAM1_FRAMESIZE_WIDTH",
+                                "name": "UVC_CAM1_FRAMESIZE_WIDTH",
+                                "range": null,
+                                "title": "Cam1 Frame Width",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_CAM1_FRAMESIZE_HEIGT",
+                                "name": "UVC_CAM1_FRAMESIZE_HEIGT",
+                                "range": null,
+                                "title": "Cam1 Frame Height",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": "If enable, add VGA and HVGA to list",
+                                "id": "UVC_CAM1_MULTI_FRAMESIZE",
+                                "name": "UVC_CAM1_MULTI_FRAMESIZE",
+                                "range": null,
+                                "title": "Enable cam1 multiple frames sizes",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-usb-device-uvc-usb-cam1-config",
+                        "title": "USB Cam1 Config",
+                        "type": "menu"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FORMAT>",
+                                        "help": null,
+                                        "id": "FORMAT_MJPEG_CAM2",
+                                        "name": "FORMAT_MJPEG_CAM2",
+                                        "range": null,
+                                        "title": "MJPEG",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FORMAT>",
+                                        "help": null,
+                                        "id": "FORMAT_H264_CAM2",
+                                        "name": "FORMAT_H264_CAM2",
+                                        "range": null,
+                                        "title": "H264",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FORMAT>",
+                                        "help": null,
+                                        "id": "FORMAT_UNCOMPR_CAM2",
+                                        "name": "FORMAT_UNCOMPR_CAM2",
+                                        "range": null,
+                                        "title": "uncompressed",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "component-config-usb-device-uvc-usb-cam2-config-uvc-cam2-format",
+                                "name": "UVC_CAM2_FORMAT",
+                                "title": "UVC Cam2 Format",
+                                "type": "choice"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_XFER_MODE>",
+                                        "help": null,
+                                        "id": "UVC_MODE_ISOC_CAM2",
+                                        "name": "UVC_MODE_ISOC_CAM2",
+                                        "range": null,
+                                        "title": "Isochronous",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_XFER_MODE>",
+                                        "help": null,
+                                        "id": "UVC_MODE_BULK_CAM2",
+                                        "name": "UVC_MODE_BULK_CAM2",
+                                        "range": null,
+                                        "title": "Bulk",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "component-config-usb-device-uvc-usb-cam2-config-uvc-cam2-transfer-mode",
+                                "name": "UVC_CAM2_XFER_MODE",
+                                "title": "UVC cam2 transfer mode",
+                                "type": "choice"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_QVGA_2",
+                                        "name": "FRAMESIZE_QVGA_2",
+                                        "range": null,
+                                        "title": "QVGA 320x240",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_HVGA_2",
+                                        "name": "FRAMESIZE_HVGA_2",
+                                        "range": null,
+                                        "title": "HVGA 480x320",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_VGA_2",
+                                        "name": "FRAMESIZE_VGA_2",
+                                        "range": null,
+                                        "title": "VGA 640x480",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_SVGA_2",
+                                        "name": "FRAMESIZE_SVGA_2",
+                                        "range": null,
+                                        "title": "SVGA 800x600",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_HD_2",
+                                        "name": "FRAMESIZE_HD_2",
+                                        "range": null,
+                                        "title": "HD 1280x720",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": "<choice UVC_CAM2_FRAMESIZE>",
+                                        "help": null,
+                                        "id": "FRAMESIZE_FHD_2",
+                                        "name": "FRAMESIZE_FHD_2",
+                                        "range": null,
+                                        "title": "FHD 1920x1080",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "component-config-usb-device-uvc-usb-cam2-config-uvc-default-resolution",
+                                "name": "UVC_CAM2_FRAMESIZE",
+                                "title": "UVC Default Resolution",
+                                "type": "choice"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "UVC_CAM2_FRAMERATE",
+                                "name": "UVC_CAM2_FRAMERATE",
+                                "range": null,
+                                "title": "Frame Rate (FPS)",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "UVC_CAM2_FRAMESIZE_WIDTH",
+                                "name": "UVC_CAM2_FRAMESIZE_WIDTH",
+                                "range": null,
+                                "title": "Cam2 Frame Width",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "UVC_CAM2_FRAMESIZE_HEIGT",
+                                "name": "UVC_CAM2_FRAMESIZE_HEIGT",
+                                "range": null,
+                                "title": "Cam2 Frame Height",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": "If enable, add VGA and HVGA to list",
+                                "id": "UVC_CAM2_MULTI_FRAMESIZE",
+                                "name": "UVC_CAM2_MULTI_FRAMESIZE",
+                                "range": null,
+                                "title": "Enable cam2 multiple frames sizes",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": "UVC_SUPPORT_TWO_CAM",
+                        "id": "component-config-usb-device-uvc-usb-cam2-config",
+                        "title": "USB Cam2 Config",
+                        "type": "menu"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_WIDTH_1",
+                                        "name": "UVC_MULTI_FRAME_WIDTH_1",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 1",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_HEIGHT_1",
+                                        "name": "UVC_MULTI_FRAME_HEIGHT_1",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 1",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_FPS_1",
+                                        "name": "UVC_MULTI_FRAME_FPS_1",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 1",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "id": "component-config-usb-device-uvc-uvc_multi_frame_config-frame_size_1",
+                                "title": "FRAME_SIZE_1",
+                                "type": "menu"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_WIDTH_2",
+                                        "name": "UVC_MULTI_FRAME_WIDTH_2",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 2",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_HEIGHT_2",
+                                        "name": "UVC_MULTI_FRAME_HEIGHT_2",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 2",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_FPS_2",
+                                        "name": "UVC_MULTI_FRAME_FPS_2",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 2",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "id": "component-config-usb-device-uvc-uvc_multi_frame_config-frame_size_2",
+                                "title": "FRAME_SIZE_2",
+                                "type": "menu"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_WIDTH_3",
+                                        "name": "UVC_MULTI_FRAME_WIDTH_3",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 3",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_HEIGHT_3",
+                                        "name": "UVC_MULTI_FRAME_HEIGHT_3",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 3",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "children": [],
+                                        "depends_on": null,
+                                        "help": null,
+                                        "id": "UVC_MULTI_FRAME_FPS_3",
+                                        "name": "UVC_MULTI_FRAME_FPS_3",
+                                        "range": null,
+                                        "title": "Enable Multi Frame Size 3",
+                                        "type": "int"
+                                    }
+                                ],
+                                "depends_on": null,
+                                "id": "component-config-usb-device-uvc-uvc_multi_frame_config-frame_size_3",
+                                "title": "FRAME_SIZE_3",
+                                "type": "menu"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-usb-device-uvc-uvc_multi_frame_config",
+                        "title": "UVC_MULTI_FRAME_CONFIG",
+                        "type": "menu"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_TINYUSB_TASK_PRIORITY",
+                                "name": "UVC_TINYUSB_TASK_PRIORITY",
+                                "range": [
+                                    1,
+                                    15
+                                ],
+                                "title": "Tinyusb task priority",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_TINYUSB_TASK_CORE",
+                                "name": "UVC_TINYUSB_TASK_CORE",
+                                "range": [
+                                    -1,
+                                    1
+                                ],
+                                "title": "Tinyusb task core",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_CAM1_TASK_PRIORITY",
+                                "name": "UVC_CAM1_TASK_PRIORITY",
+                                "range": [
+                                    1,
+                                    15
+                                ],
+                                "title": "Cam1 task priority",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "UVC_CAM1_TASK_CORE",
+                                "name": "UVC_CAM1_TASK_CORE",
+                                "range": [
+                                    -1,
+                                    1
+                                ],
+                                "title": "Cam1 task core",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "UVC_CAM2_TASK_PRIORITY",
+                                "name": "UVC_CAM2_TASK_PRIORITY",
+                                "range": null,
+                                "title": "Cam2 task priority",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "UVC_SUPPORT_TWO_CAM",
+                                "help": null,
+                                "id": "UVC_CAM2_TASK_CORE",
+                                "name": "UVC_CAM2_TASK_CORE",
+                                "range": null,
+                                "title": "Cam2 task core",
+                                "type": "int"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-usb-device-uvc-uvc-task-config",
+                        "title": "UVC Task Config",
+                        "type": "menu"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-usb-device-uvc",
+                "title": "USB Device UVC",
                 "type": "menu"
             }
         ],

@@ -86,4 +86,6 @@ C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/usb/libusb.a
 C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/espressif__esp_jpeg/libespressif__esp_jpeg.a
 C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/espressif__esp32-camera/libespressif__esp32-camera.a
+C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/espressif__tinyusb/libespressif__tinyusb.a
+C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/espressif__usb_device_uvc/libespressif__usb_device_uvc.a
 C:/Users/wiyo/Desktop/07-lcd_camera/build/esp-idf/main/libmain.a

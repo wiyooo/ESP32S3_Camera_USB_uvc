@@ -4,7 +4,7 @@
     "board/esp32s3-builtin.cfg"
   ],
   "idf.flashType": "UART",
-  "idf.portWin": "COM12",
+  "idf.portWin": "COM26",
   "idf.customExtraVars": {
     "0": "{",
     "1": "\"",

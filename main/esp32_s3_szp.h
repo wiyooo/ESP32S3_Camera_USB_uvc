@@ -220,5 +220,6 @@ void lcd_draw_pictrue(int x_start, int y_start, int x_end, int y_end, const unsi
 
 void bsp_camera_init(void);
 void app_camera_lcd(void);
+esp_err_t app_camera_usb_init(void);
 /********************    摄像头 ↑   *************************/
 /***********************************************************/
