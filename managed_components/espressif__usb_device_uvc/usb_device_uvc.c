@@ -188,7 +188,11 @@ static void video_task(void *arg)
             continue;
         }
         frame_len = pic->len;
-        memcpy(uvc_buffer, pic->buf, frame_len);
+        /* Allow callers to encode directly into the transfer buffer.  The
+         * task never requests the next frame until this transfer completes. */
+        if (uvc_buffer != pic->buf) {
+            memcpy(uvc_buffer, pic->buf, frame_len);
+        }
         s_uvc_device.user_config[0].fb_return_cb(pic, s_uvc_device.user_config[0].cb_ctx);
         tx_busy = 1;
         tud_video_n_frame_xfer(0, 0, (void *)uvc_buffer, frame_len);

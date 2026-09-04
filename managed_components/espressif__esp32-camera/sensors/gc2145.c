@@ -209,7 +209,7 @@ static int set_framesize(sensor_t *sensor, framesize_t framesize)
     };
     const struct subsample_cfg subsample_cfgs[] = { // define some subsample ratio
         // {60, 420, 0x77, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, //1/7 // A smaller ratio brings a larger view, but it reduces the frame rate
-        // {84, 420, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, //1/5
+        {84, 420, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, //1/5, full FOV for QVGA
         // {105, 420, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},//1/4
         {140, 420, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},//1/3
         {210, 420, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},//1/2
@@ -225,7 +225,10 @@ static int set_framesize(sensor_t *sensor, framesize_t framesize)
      * Strategy: try to keep the maximum perspective
      */
     uint8_t i = 0;
-    if (framesize >= FRAMESIZE_QVGA) {
+    /* Keep the full sensor field of view at QVGA.  Starting at the 1/5
+     * subsampling entry scales the complete 1600x1200 sensor image to
+     * 320x240 without increasing the output buffer size. */
+    if (framesize > FRAMESIZE_QVGA) {
         i = 1;
     }
     for (; i < sizeof(subsample_cfgs) / sizeof(struct subsample_cfg); i++) {

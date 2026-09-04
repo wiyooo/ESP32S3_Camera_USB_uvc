@@ -5,4 +5,6 @@
 cmake_minimum_required(VERSION 3.16)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+# Only build the camera application and its dependencies.
+set(COMPONENTS main)
 project(lcd_camera)
